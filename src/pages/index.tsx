@@ -1,6 +1,6 @@
 import { AddTodo } from "@/components/AddTodo";
-import { FilterType } from "@/model/FilterType";
-import { Todo } from "@/model/Todo";
+import { FilterType } from "@/types/FilterType";
+import { Todo } from "@/types/Todo";
 import { useToast } from "@/hooks/use-toast";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { TodoStats } from "@/components/TodoStats";
@@ -12,8 +12,6 @@ const Index = () => {
   const [filter, setFilter] = useState<FilterType>('all');
   const { toast } = useToast();
 
-
-    // Load todos from localStorage on mount
   useEffect(() => {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
@@ -29,7 +27,6 @@ const Index = () => {
     }
   }, []);
 
-  // Save todos to localStorage whenever todos change
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);

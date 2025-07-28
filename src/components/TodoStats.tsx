@@ -1,7 +1,8 @@
 import { TodoStatsProps } from "@/types/TodoStatsProps";
 import { CheckCircle2, Circle, Target } from "lucide-react";
+import React from "react";
 
-export const TodoStats = ({ total, completed, active }: TodoStatsProps) => {
+const TodoStat = ({ total, completed, active }: TodoStatsProps) => {
     const completionRate = total > 0 ? Math.round((completed / total) * 100) : 0;
 
     return (
@@ -40,3 +41,5 @@ export const TodoStats = ({ total, completed, active }: TodoStatsProps) => {
     );
 
 }
+
+export const TodoStats = React.memo(TodoStat);
